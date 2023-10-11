@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+    
+</head>
+  
+  <body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <div class="create-post-btn">
+            <a href="/create-post">Create Post</a>
+        </div>
+        <div class="posts">
+        <% if(posts) { %>
+           <% posts.map(post => { %>
+                <div class="post">
+                    <ul>
+                        <li>
+                            <h2><%= post.title %></h2>
+                            <p><%= post.content %></p>
+                        </li>
+                    </ul>
+                    <div class="post-action-buttons">
+                        <a class="edit" href="/edit-post/<%= post._id %>">Edit</a>
+                        <form action="delete-post/<%= post._id %>" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                                <input type="hidden" value="<%= post._id %>" name="postId">
+                                <button class="btn" type='submit'>Delete</button>
+                            </form>
+                    </div>
+                </div>
+            <%})%>
+                <% }else { %>
+                    <div>You have 0 posts</div>
+                    <%}%>
+        </div>
+    </main>
+    <%- include('../includes/end.ejs') %>

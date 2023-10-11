@@ -1,0 +1,28 @@
+<header class="header">
+  <nav class="navigation">
+    <ul class="panel">
+      <li>
+        <a href="/">Blog</a>
+      </li>
+      <% if(isAuthenticated) { %>
+      <li>
+        <a href="/my-posts">My Posts</a>
+      </li>
+      <% } %>
+    </ul>
+    <ul class="auth">
+      <% if(isAuthenticated) { %>
+      <li>
+        <form action="/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button class="btn-logout" type="submit">Logout</button>
+        </form>
+      </li>
+      <% }else { %>
+      <li>
+        <a href="/login">Login</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

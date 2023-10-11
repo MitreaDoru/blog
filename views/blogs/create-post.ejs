@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+  
+  <body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if(errorMessage) { %>
+            <div class="error-message"><%= errorMessage %></div>
+            <% } %>
+        <form class="form-edit" action="/create-post" method="POST">
+            <ul>
+                <li class="form-check">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" value="<%= oldInput.title %>">
+                </li>
+                <li class="form-check">
+                    <label for="content">Content</label>
+                    <textarea name="content" id="content" cols="60" rows="10"><%= oldInput.content %></textarea>
+                </li>
+            </ul>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button class="btn" type="submit">Create</button>
+        </form>
+        
+    </main>
+    <%- include('../includes/end.ejs') %>

@@ -1,0 +1,38 @@
+.login-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-check label,
+.form-check input,
+.form-check textarea {
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+}
+.form-edit button {
+  margin-left: 2.5rem;
+}
+.login-form a {
+  text-decoration: none;
+  color: blue;
+}
+.form-edit {
+  width: 100%;
+}
+.form-edit ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+  list-style: none;
+}
+.error-message {
+  margin-left: 2.5rem;
+  color: red;
+}
