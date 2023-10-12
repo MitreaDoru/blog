@@ -36,7 +36,6 @@ app.use(csfrProtection)
 app.use((req, res, next) => {
     res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.csrfToken = req.csrfToken()
-    console.log('1');
     next()
 })
 
@@ -44,18 +43,14 @@ app.use((req, res, next) => {
     if (!req.session.cookie.expires)
         req.session.destroy((err) => {
             res.redirect('/');
-            console.log('2');
         })
-    console.log('3');
     next()
 })
 
 app.use((req, res, next) => {
     if (!req.session.user) {
-        console.log('4');
         return next()
     }
-    console.log('5');
     User.findById(req.session.user._id)
         .then(user => {
             if (!user) {
@@ -76,7 +71,6 @@ app.use(authRoutes)
 app.use(adminRoutes)
 app.use(errorController.get404)
 app.use((error, req, res, next) => {
-    console.log('6');
     console.log(error);
 
     res.status(500).render('500', { pageTitle: "Database failed", path: '/500', isAuthenticated: req.session.isLoggedIn })

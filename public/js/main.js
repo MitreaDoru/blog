@@ -1,7 +1,6 @@
 const updateLikesId = (btn) => {
     const postId = btn.parentNode.querySelector('[name=postId]').value;
     const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
-    console.log(postId, csrf);
     fetch('http://localhost:3000/likes/' + postId, {
         method: 'GET',
         headers: {

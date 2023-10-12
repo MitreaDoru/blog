@@ -19,7 +19,6 @@ router.post('/signup', [
     body('password', 'Please enter a password with only numbers and text and at least 5 characters').isLength({ min: 5 }).isAlphanumeric().trim(),
     body('confirmPassword').trim().custom(async (value, { req }) => {
         if (value !== req.body.password) {
-            console.log(value, "confirm");
             throw new Error('Password have to match')
         }
     })
@@ -39,7 +38,7 @@ router.post('/login', [
                     req.session.isLoggedIn = true
                     req.session.user = user
                     return req.session.save((err) => {
-                        console.log(err);
+                        console.log('hehe');
                     })
                 } else {
                     req.session.isLoggedIn = false
