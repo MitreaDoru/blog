@@ -4,6 +4,7 @@ const updateLikesId = (btn) => {
     fetch('http://localhost:3000/likes/' + postId, {
         method: 'GET',
         headers: {
+            'Access-Control-Allow-Origin': '*',
             'csrf-token': csrf,
             "Content-Type": "application/json",
         },
