@@ -1,7 +1,7 @@
 const updateLikesId = (btn) => {
     const postId = btn.parentNode.querySelector('[name=postId]').value;
     const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
-    fetch('http://localhost:3000/likes/' + postId, {
+    fetch('https://nodejs-mongodb-blog.onrender.com/likes/' + postId, {
         method: 'GET',
         headers: {
             'Access-Control-Allow-Origin': '*',
